@@ -60,4 +60,58 @@ class Solution:
             answer[i] = L[i]*R[i]
 
         return answer            
-        
+    
+'''
+Dry Run:
+
+Here's a step-by-step dry run of the productExceptSelf algorithm using nums = as an example:
+
+Step 1: Initialize Arrays
+text
+nums = [1,2,3,4]
+L    = [1,0,0,0]  # Left products
+R    = [0,0,0,1]  # Right products
+answer = [0,0,0,0]
+
+Step 2: Calculate Left Products (L)
+text
+Index 0: L[0] = 1 (base case)
+Index 1: L[1] = nums[0] * L[0] = 1*1 = 1
+Index 2: L[2] = nums[1] * L[1] = 2*1 = 2
+Index 3: L[3] = nums[2] * L[2] = 3*2 = 6
+
+Final L = [1,1,2,6]
+
+Step 3: Calculate Right Products (R)
+text
+Index 3: R[3] = 1 (base case)
+Index 2: R[2] = nums[3] * R[3] = 4*1 = 4
+Index 1: R[1] = nums[2] * R[2] = 3*4 = 12
+Index 0: R[0] = nums[1] * R[1] = 2*12 = 24
+
+Final R = [24,12,4,1]
+
+Step 4: Calculate Answer Array
+text
+Index 0: 1 * 24 = 24
+Index 1: 1 * 12 = 12
+Index 2: 2 * 4 = 8
+Index 3: 6 * 1 = 6
+
+Final answer = [24,12,8,6]
+Visualization
+text
+Original Array: [1,  2,  3,  4]
+Left Products:  [1,  1,  2,  6]
+Right Products: [24, 12, 4,  1]
+Final Answer:   [24, 12, 8,  6]
+Key Operations
+Left Pass → Build cumulative product from left to right
+
+Right Pass → Build cumulative product from right to left
+
+Combine → Multiply corresponding left/right products
+
+This approach achieves O(n) time complexity with O(n) space, avoiding division and handling zeros naturally.
+
+'''    
