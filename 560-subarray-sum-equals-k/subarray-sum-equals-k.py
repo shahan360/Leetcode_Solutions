@@ -27,3 +27,19 @@ class Solution:
             # Update hashmap with the current total
             hashmap[total] = hashmap.get(total, 0) + 1 # humne hashmap mein current total ko update kiya hai, agar total pehle se hai to uski value ko 1 se increase kiya hai, warna 1 set kiya hai (we updated the hashmap with the current total, if total is already present, we increased its value by 1, otherwise set it to 1)
         return count # humne count ko return kiya hai jo ki subarrays ka count hai jinka sum k ke barabar hai (we returned count which is the count of subarrays whose sum is equal to k)
+
+# Dry Run:
+# nums = [1, 1, 1], k = 2
+# Initial hashmap: {0: 1}
+# Iteration 1: num = 1
+# total = 1, hashmap = {0: 1, 1: 1}
+# (total - k) = -1 not in hashmap, count remains 0
+# Iteration 2: num = 1
+# total = 2, hashmap = {0: 1, 1: 1, 2: 1}
+# (total - k) = 0 in hashmap, count += 1 (count = 1)
+# Iteration 3: num = 1
+# total = 3, hashmap = {0: 1, 1: 1, 2: 1, 3: 1}
+# (total - k) = 1 in hashmap, count += 1 (count = 2)
+# Final count = 2
+# Return 2
+# The function correctly counts the number of subarrays whose sum equals k. 
