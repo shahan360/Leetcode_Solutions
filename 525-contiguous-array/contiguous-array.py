@@ -49,4 +49,45 @@ class Solution:
             else: # agar count hashmap mein nahi hai to hum count ko hashmap mein add karte hain (if count is not in hashmap, we add count to hashmap)
                 hashmap[count] = i # humne count ko hashmap mein add kiya hai (we added count to hashmap)
         return max_length # humne max_length ko return kiya hai jo ki balanced subarrays ka maximum length hai (we returned max_length which is the maximum length of balanced subarrays)
+
+# Example usage:
+# solution = Solution()
+# print(solution.findMaxLength([0, 1, 0, 1, 0, 1]))
+# Output: 6 (the entire array is a balanced subarray)
+# print(solution.findMaxLength([0, 0, 1, 0, 1, 1, 0]))
+# Output: 4 (the subarray [0, 1, 0, 1] is a balanced subarray of length 4)
+# print(solution.findMaxLength([0, 1, 0, 1, 0, 1, 0, 1]))
+# Output: 8 (the entire array is a balanced subarray)   
+
+# Dry Run:
+# nums = [0, 1, 0, 1, 0, 1, 0, 1]
+# Initial hashmap: {0: -1}
+# Iteration 1: i = 0, num = 0
+# count = -1, hashmap = {0: -1, -1: 0}
+# count not in hashmap, add -1 to hashmap
+# Iteration 2: i = 1, num = 1
+# count = 0, hashmap = {0: -1, -1: 0, 1: 1}
+# count in hashmap, max_length = max(0, 1 - (-1)) = 2
+# Iteration 3: i = 2, num = 0
+# count = -1, hashmap = {0: -1, -1: 0, 1: 1, -2: 2}
+# count in hashmap, max_length = max(2, 2 - 0) = 2
+# Iteration 4: i = 3, num = 1
+# count = 0, hashmap = {0: -1, -1: 0, 1: 1, -2: 2, 2: 3}
+# count in hashmap, max_length = max(2, 3 - (-1)) = 4
+# Iteration 5: i = 4, num = 0
+# count = -1, hashmap = {0: -1, -1: 0, 1: 1, -2: 2, 2: 3, -3: 4}
+# count in hashmap, max_length = max(4, 4 - 0) = 4
+# Iteration 6: i = 5, num = 1
+# count = 0, hashmap = {0: -1, -1: 0, 1: 1, -2: 2, 2: 3, -3: 4, 3: 5}
+# count in hashmap, max_length = max(4, 5 - (-1)) = 6
+# Iteration 7: i = 6, num = 0
+# count = -1, hashmap = {0: -1, -1: 0, 1: 1, -2: 2, 2: 3, -3: 4, 3: 5, -4: 6}
+# count in hashmap, max_length = max(6, 6 - 0) = 6
+# Iteration 8: i = 7, num = 1
+# count = 0, hashmap = {0: -1, -1: 0, 1: 1, -2: 2, 2: 3, -3: 4, 3: 5, -4: 6, 4: 7}
+# count in hashmap, max_length = max(6, 7 - (-1)) = 8
+# Final max_length = 8
+# Return 8
+# The function correctly finds the maximum length of a contiguous subarray with an equal number of 0s and 1s.
+
         
