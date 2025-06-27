@@ -1,6 +1,6 @@
 class Solution:
     def longestPalindrome(self, s: str) -> int:
-        # # Brute force Approach (for TLE): Finds longest palindromic substring (incorrect for Leetcode 409)
+        # # Brute force Approach
         # # Time Complexity: O(n^3)
         # # Space Complexity: O(1)
         # max_length = 0 # humne max_length ko 0 se initialize kiya hai kyunki abhi tak humne koi bhi palindrome nahi dekha hai (we initialized max_length to 0 because we haven't seen any palindrome yet)
@@ -10,7 +10,7 @@ class Solution:
         #         if substring == substring[::-1]: # agar substring palindrome hai to hum max_length ko update karte hain (if the substring is a palindrome, we update max_length)
         #             max_length = max(max_length, j - i + 1) # humne max_length ko update kiya hai (we updated max_length)
         # return max_length # hum max_length ko return karte hain (we return max_length)
-
+        
         # Optimized Approach: Using a hashmap to count character frequencies
         # Time Complexity: O(n)
         # Space Complexity: O(1) (since we only use a fixed-size hashmap for 52 letters)
@@ -27,4 +27,4 @@ class Solution:
                 odd_found = True # humne odd_found ko True set kiya hai (we set odd_found to True)
         if odd_found: # agar koi odd count mila hai to hum length ko 1 se badhate hain (if we found any odd count, we increase the length by 1)
             length += 1 # humne length ko 1 se badhaya hai (we increased the length by 1)
-        return length # hum length ko return karte hain (we return the length) 
+        return length # hum length ko return karte hain (we return the length)
