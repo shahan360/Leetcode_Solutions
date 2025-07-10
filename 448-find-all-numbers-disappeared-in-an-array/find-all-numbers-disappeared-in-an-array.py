@@ -1,17 +1,12 @@
 class Solution:
     def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
         n = len(nums)  # Store the length of the array in n
-        result = []  # Create an empty list for the result
-        nums.sort()  # Sort the array to make it easier to find missing numbers
-        i = 0 # Initialize index i to 0
-        for num in range(1, n + 1):  # Check numbers from 1 to n
-            if i >= n or nums[i] > num:
-                # If i is out of bounds or the current number in nums is greater than num,
-                # it means num is missing in the array
-                result.append(num)
-            else:
-                # If the current number in nums is equal to num, move to the next index
-                while i < n and nums[i] == num:
-                    i += 1
+        result = [] # Create an empty list for the result
+        num_set = set(nums)  # Create a set from the nums array for quick lookup
+        for i in range(1, n + 1):
+            if i not in num_set:
+                # If i is not in the set, it means it's a missing number
+                result.append(i)
         return result  # Return the list of missing numbers
+        # This approach has a time complexity of O(n) and space complexity of O(n) due to the set.
         
