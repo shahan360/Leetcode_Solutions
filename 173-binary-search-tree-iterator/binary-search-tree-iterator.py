@@ -10,27 +10,27 @@ class BSTIterator:
         """
         Initialize the iterator with the root of the BST.
         """
-        self.stack = []
-        self._push_left(root)
+        self.stack = [] # yeh stack BST ke nodes ko store karega (this stack will store the nodes of the BST)
+        self._push_left(root) # yeh function left subtree ke sabhi nodes ko stack me push karega (this function will push all left children of the root onto the stack)
         # Push all left children of the root onto the stack
 
     def _push_left(self, node: Optional[TreeNode]):
-        while node:
-            self.stack.append(node)
-            node = node.left  # Move to the left child 
+        while node: # jab tak node None nahi ho jata (while node is not None)
+            self.stack.append(node) # Stack me node ko push karte hain (push the node onto the stack)
+            node = node.left  # Move to the left child    
+        
 
     def next(self) -> int:
         """
         Return the next smallest number in the BST.
         """
-        if not self.stack:
-            return None
+        if not self.stack: # agar stack khali hai to next element nahi hai (if the stack is empty, there is no next element)
+            return None # raise Exception("No more elements in the BST")  # Raise an exception if there are no more elements to iterate over
         node = self.stack.pop()  # Pop the top node from the stack
         self._push_left(node.right)  # Push all left children of the right subtree onto the stack
         return node.val  # Return the value of the popped node
-        
 
-    def hasNext(self) -> bool:
+    def hasNext(self) -> bool: 
         """
         Return whether there is a next smallest number in the BST.
         """
