@@ -20,11 +20,25 @@ class Solution:
         4. Recursively check the left and right subtrees with the updated valid range.
         5. Return True if both subtrees are valid, otherwise return False.
         '''
+        def is_node_in_range(node, low, high):
+            # Checks if the node value is between low and high (exclusive).
+            return low < node.val < high
+
+        def validate_left_subtree(node, low, high):
+            # The left child must be less than the current node's value.
+            return helper(node.left, low, node.val)
+
+        def validate_right_subtree(node, low, high):
+            # The right child must be greater than the current node's value.
+            return helper(node.right, node.val, high)
+
         def helper(node, low=float('-inf'), high=float('inf')):
             if not node:
+                # An empty subtree is a valid BST
                 return True
-            if not (low < node.val < high):
+            if not is_node_in_range(node, low, high):
                 return False
-            return (helper(node.left, low, node.val) and helper(node.right, node.val, high))
+            # Check the left and right subtrees
+            return validate_left_subtree(node, low, high) and validate_right_subtree(node, low, high)
         return helper(root)
         
