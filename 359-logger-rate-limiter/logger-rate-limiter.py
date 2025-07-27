@@ -1,7 +1,7 @@
 class Logger:
 
     def __init__(self):
-        self.lastTime = dict()
+        self.lastTime = {}
         
 
     def shouldPrintMessage(self, timestamp: int, message: str) -> bool:
