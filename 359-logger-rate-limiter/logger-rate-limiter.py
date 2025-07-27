@@ -1,12 +1,14 @@
 class Logger:
 
     def __init__(self):
-        self.lastTime = {}
+        self.timeOccurance = {}
+        
 
     def shouldPrintMessage(self, timestamp: int, message: str) -> bool:
-        if message in self.lastTime and timestamp - self.lastTime[message] < 10:
+        if (message in self.timeOccurance) and (timestamp - self.timeOccurance[message] < 10):
             return False
-        self.lastTime[message] = timestamp
+        else:
+            self.timeOccurance[message] = timestamp
         return True
         
 
