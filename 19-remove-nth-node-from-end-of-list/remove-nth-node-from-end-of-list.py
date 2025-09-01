@@ -33,4 +33,5 @@ class Solution:
         
         slow.next = slow.next.next # Skip the nth node from the end by setting the next of slow to the next of slow.next
         # This effectively removes the nth node from the end of the list
-        return dummy.next  # Return the next of dummy to skip the dummy node or head if no dummy is used. This will return the modified list with the nth node removed.       
+        return dummy.next  # Return the next of dummy to skip the dummy node or head if no dummy is used. This will return the modified list with the nth node removed.
+              
